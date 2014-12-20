@@ -9,6 +9,7 @@ import com.mycompany.boundlayout.entity.User;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -38,9 +39,10 @@ public class UserFacade extends AbstractFacade<User> implements UserFacadeLocal 
     }
 
     @Override
-    public void validateUser(String userName) {
-          
-        
+    public boolean validateUser(String userName) {
+      TypedQuery<User> tq = em.createNamedQuery("User.findByName", User.class);
+       
+      return  tq.setParameter("name", userName).getResultList().isEmpty();
     
     }
     

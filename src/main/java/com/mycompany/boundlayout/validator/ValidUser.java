@@ -24,7 +24,7 @@ import javax.validation.Payload;
 @Target({ElementType.METHOD, ElementType.FIELD,ElementType.PARAMETER})
 @Retention(RetentionPolicy.RUNTIME)
 public @interface ValidUser {
-    String message() default "You must use valid user name";
+    String message() default "This username already exist";
     Class<?>[] groups() default {};
     Class<? extends Payload>[] payload() default {};
     

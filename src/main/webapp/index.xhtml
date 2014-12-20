@@ -11,8 +11,8 @@
     <h:body>
         <h:form>
             <h:outputLabel  for = "input" value="Click for validate"/>
-            <h:inputText id ="input" required="true" value="#{login.validateValue}"/>
-            <h:commandButton value="Validate"/>
+            <h:inputText id ="input" required="true" value="#{login.userName}"/>
+            <h:commandButton value="Validate" action = "#{login.createUser()}"/>
             <h:messages for="input"/>   
         </h:form>
     </h:body>

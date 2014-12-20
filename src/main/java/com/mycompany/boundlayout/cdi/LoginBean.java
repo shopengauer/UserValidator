@@ -35,7 +35,33 @@ public class LoginBean {
     @NotBlank
     private String userName;
 
+    @NotBlank
     private String password;
+    
+    
+    public String createUser(){
+        
+         userFacade.createUser(userName, password);
+         return null;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+    
+    
     
     
     

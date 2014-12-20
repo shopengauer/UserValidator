@@ -32,7 +32,7 @@ public interface UserFacadeLocal {
 
     void createUser(String userName, String password);
 
-    void validateUser(String userName);
+    boolean validateUser(String userName);
 
     
     

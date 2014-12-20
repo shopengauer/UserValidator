@@ -32,10 +32,9 @@ public class UserValidator implements ConstraintValidator<ValidUser, String>{
     }
 
     @Override
-    public boolean isValid(String value, ConstraintValidatorContext context) {
-        
-        userFacade.validateUser(value);
-        return false;
+    public boolean isValid(String username, ConstraintValidatorContext context) {
+         
+        return userFacade.validateUser(username);
     }
 
    
