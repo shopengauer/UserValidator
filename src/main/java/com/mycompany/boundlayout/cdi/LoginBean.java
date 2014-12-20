@@ -10,6 +10,9 @@ import com.mycompany.boundlayout.validator.ValidUser;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import org.hibernate.validator.constraints.NotBlank;
 
 /**
@@ -36,12 +39,34 @@ public class LoginBean {
     private String userName;
 
     @NotBlank
-    private String password;
+    private String password1;
+    
+    @NotBlank
+    private String password2;
+    
+   
+    public void validatePassword(ActionEvent event){
+        
+        if(!(password1.equals(password2))){
+           
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            FacesMessage facesMessage = new FacesMessage("Passwords not equals");
+            facesContext.addMessage("inputPas1", facesMessage);
+           
+            facesContext.getApplication().getNavigationHandler().handleNavigation(facesContext,null,"/index");
+            
+        }
+        
+    }    
+    
+    
     
     
     public String createUser(){
         
-         userFacade.createUser(userName, password);
+      if(password1.equals(password2)) { 
+         userFacade.createUser(userName, password1);
+      }
          return null;
     }
 
@@ -53,25 +78,23 @@ public class LoginBean {
         this.userName = userName;
     }
 
-    public String getPassword() {
-        return password;
+    public String getPassword1() {
+        return password1;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-    
-    
-    
-    
-    
-    
-    public String getValidateValue() {
-        return userName;
+    public void setPassword1(String password) {
+        this.password1 = password;
     }
 
-    public void setValidateValue(String userName) {
-        this.userName = userName;
+    public String getPassword2() {
+        return password2;
+    }
+
+    public void setPassword2(String password2) {
+        this.password2 = password2;
     }
     
+     
+    
+     
 }

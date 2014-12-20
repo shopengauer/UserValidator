@@ -10,11 +10,24 @@
     </h:head>
     <h:body>
         <h:form>
-            <h:outputLabel  for = "input" value="Click for validate"/>
-            <h:inputText id ="input" required="true" value="#{login.userName}"/>
-            <h:commandButton value="Validate" action = "#{login.createUser()}"/>
+            <h:panelGrid columns="2">
+            <h:outputLabel  for = "input" value="Enter your name"/>
+            <h:inputText id ="input" value="#{login.userName}"/>
+            <h:outputLabel  for = "input" value="Enter password"/>
+            <h:inputSecret id ="inputPas1" value="#{login.password1}"/>
+            <h:outputLabel  for = "input" value="Enter password again"/>
+            <h:inputSecret id ="inputPas2" value="#{login.password2}"/>
+            <h:commandButton value="Validate" actionListener="#{login.validatePassword}" action = "#{login.createUser()}"/>
+            </h:panelGrid>
             <h:messages for="input"/>   
         </h:form>
+   
+        <h:form>
+            <h:inputFile value="#{documentBean.document}"/>
+            
+        </h:form>   
+    
+    
     </h:body>
 </html>
 
